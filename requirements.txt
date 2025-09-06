@@ -1,40 +1,40 @@
 # Core Computer Vision Libraries
-opencv-python==4.8.1.78
-opencv-contrib-python==4.8.1.78
-numpy==1.24.3
-scipy==1.11.1
+opencv-python>=4.8.0
+opencv-contrib-python>=4.8.0
+numpy>=1.24.0
+scipy>=1.10.0
 
 # Deep Learning and AI
-torch==2.0.1
-torchvision==0.15.2
-ultralytics==8.0.147  # YOLO v8
-onnx==1.14.0
-onnxruntime==1.15.1
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics>=8.0.0
+onnx>=1.14.0
+onnxruntime>=1.15.0
 
 # Image Processing
-Pillow==10.0.0
-scikit-image==0.21.0
-imageio==2.31.1
-imageio-ffmpeg==0.4.8
+Pillow>=9.0.0
+scikit-image>=0.20.0
+imageio>=2.25.0
+imageio-ffmpeg>=0.4.0
 
 # Data Science and Analysis
-pandas==2.0.3
-matplotlib==3.7.2
-seaborn==0.12.2
-plotly==5.15.0
+pandas>=1.5.0
+matplotlib>=3.6.0
+seaborn>=0.11.0
+plotly>=5.10.0
 
 # Tracking Libraries
-filterpy==1.4.5
-lap==0.4.0
+filterpy>=1.4.0
+lap>=0.4.0
 
 # Video Processing
-ffmpeg-python==0.2.0
+ffmpeg-python>=0.2.0
 
 # Configuration and Utilities
-PyYAML==6.0.1
-tqdm==4.65.0
-click==8.1.6
-loguru==0.7.0
+PyYAML>=6.0
+tqdm>=4.60.0
+click>=8.0.0
+loguru>=0.6.0
 
 # Jupyter and Development
 jupyter==1.0.0
