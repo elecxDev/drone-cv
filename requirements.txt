@@ -1,0 +1,50 @@
+# Core Computer Vision Libraries
+opencv-python==4.8.1.78
+opencv-contrib-python==4.8.1.78
+numpy==1.24.3
+scipy==1.11.1
+
+# Deep Learning and AI
+torch==2.0.1
+torchvision==0.15.2
+ultralytics==8.0.147  # YOLO v8
+onnx==1.14.0
+onnxruntime==1.15.1
+
+# Image Processing
+Pillow==10.0.0
+scikit-image==0.21.0
+imageio==2.31.1
+imageio-ffmpeg==0.4.8
+
+# Data Science and Analysis
+pandas==2.0.3
+matplotlib==3.7.2
+seaborn==0.12.2
+plotly==5.15.0
+
+# Tracking Libraries
+filterpy==1.4.5
+lap==0.4.0
+
+# Video Processing
+ffmpeg-python==0.2.0
+
+# Configuration and Utilities
+PyYAML==6.0.1
+tqdm==4.65.0
+click==8.1.6
+loguru==0.7.0
+
+# Jupyter and Development
+jupyter==1.0.0
+notebook==7.0.2
+ipywidgets==8.0.7
+
+# Testing
+pytest==7.4.0
+pytest-cov==4.1.0
+
+# Optional GPU acceleration (uncomment if using CUDA)
+# torch==2.0.1+cu118 --index-url https://download.pytorch.org/whl/cu118
+# torchvision==0.15.2+cu118 --index-url https://download.pytorch.org/whl/cu118

@@ -1,0 +1,98 @@
+# Drone Vehicle Detection Configuration
+
+# Model Configuration
+model:
+  type: "yolov8"  # yolov8, yolov5, custom
+  weights_path: "models/yolo/yolov8n.pt"
+  confidence_threshold: 0.5
+  iou_threshold: 0.45
+  device: "auto"  # auto, cpu, cuda, mps
+
+# Detection Classes (COCO dataset indices for vehicles)
+detection:
+  target_classes: [2, 3, 5, 7]  # car, motorcycle, bus, truck
+  class_names:
+    2: "car"
+    3: "motorcycle" 
+    5: "bus"
+    7: "truck"
+  
+# Tracking Configuration
+tracking:
+  tracker_type: "bytetrack"  # bytetrack, deepsort, sort
+  max_disappeared: 30
+  max_distance: 50
+  track_buffer: 30
+  match_threshold: 0.8
+  frame_rate: 30
+
+# Video Processing
+video:
+  input_format: [".mp4", ".avi", ".mov", ".mkv"]
+  output_format: ".mp4"
+  resize_factor: 1.0  # 1.0 = no resize, 0.5 = half size
+  skip_frames: 0  # Process every nth frame (0 = process all)
+  
+# Region of Interest (ROI)
+roi:
+  enabled: false
+  coordinates: []  # [[x1,y1], [x2,y2], [x3,y3], [x4,y4]]
+  
+# Traffic Analysis
+analysis:
+  counting_line:
+    enabled: true
+    coordinates: []  # [[x1,y1], [x2,y2]] - line coordinates
+    direction: "both"  # both, up, down, left, right
+  
+  density_zones:
+    enabled: true
+    grid_size: [10, 10]  # Divide frame into grid for density analysis
+    
+  speed_estimation:
+    enabled: false
+    pixel_to_meter_ratio: 1.0  # Calibration needed
+    
+# Visualization
+visualization:
+  show_detections: true
+  show_tracks: true
+  show_count: true
+  show_density_map: true
+  show_trajectories: true
+  trail_length: 30
+  
+  colors:
+    car: [0, 255, 0]      # Green
+    motorcycle: [255, 0, 0]  # Blue  
+    bus: [0, 0, 255]      # Red
+    truck: [255, 255, 0]  # Cyan
+    
+  font_scale: 0.6
+  thickness: 2
+
+# Output Configuration  
+output:
+  save_video: true
+  save_frames: false
+  save_statistics: true
+  save_trajectories: true
+  
+  # Paths (relative to project root)
+  video_output_dir: "results/videos"
+  frames_output_dir: "results/frames" 
+  stats_output_dir: "results/statistics"
+  reports_output_dir: "results/reports"
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_file: "logs/drone_cv.log"
+  console_output: true
+
+# Performance
+performance:
+  batch_processing: false
+  batch_size: 1
+  use_threading: true
+  max_workers: 4
