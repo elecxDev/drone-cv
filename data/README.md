@@ -44,6 +44,7 @@ This directory should contain small sample files for testing and development.
 1. Copy a short video clip (10-30 seconds) to `data/sample/`
 2. Rename it descriptively (e.g., `highway_traffic.mp4`)
 3. Test the system with: `python main.py --input data/sample/highway_traffic.mp4`
+4. For live detection: `python live_detection.py data/raw/video.mp4`
 
 ### Sample Data Sources
 

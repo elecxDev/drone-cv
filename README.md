@@ -60,17 +60,21 @@ pip install -r requirements.txt
 
 ## Usage
 
+### Command Line Interface
+```bash
+# Standard processing
+python main.py --input data/raw/sample_video.mp4 --output results/output_video.mp4
+
+# Live detection
+python live_detection.py data/raw/video.mp4
+```
+
 ### Basic Usage
 ```python
 from src.main import DroneVehicleDetector
 
 detector = DroneVehicleDetector('config.yaml')
 results = detector.process_video('data/raw/sample_video.mp4')
-```
-
-### Command Line Interface
-```bash
-python main.py --input data/raw/sample_video.mp4 --output results/output_video.mp4
 ```
 
 ## Configuration
