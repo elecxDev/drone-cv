@@ -69,7 +69,7 @@ def run_live_detection():
     
     print(f"\nProcessing {total_frames} frames...")
     print("=" * 60)
-    print("🎮 CONTROLS:")
+    print("CONTROLS:")
     print("   'q' - Quit")
     print("   'p' - Pause/Resume")
     print("   's' - Save screenshot")
@@ -264,7 +264,7 @@ def run_live_detection():
             out.write(frame)
         
         # Show live preview with info panel on the side
-        cv2.imshow('🚁 Drone Vehicle Detection - LIVE FEED', combined_display)
+        cv2.imshow('Drone Vehicle Detection - LIVE FEED', combined_display)
         
         # Handle keyboard input
         key = cv2.waitKey(30 if not paused else 0) & 0xFF
@@ -302,17 +302,17 @@ def run_live_detection():
     
     # Print final results
     print("=" * 60)
-    print(f"🎉 DETECTION COMPLETE!")
+    print(f"DETECTION COMPLETE!")
     print(f"Total frames processed: {frame_count}")
     print(f"Total UNIQUE vehicles detected: {total_unique_vehicles}")
     print(f"Output video saved as: live_detected_output.mp4")
     
     if detection_summary:
-        print(f"\n📊 Final unique vehicle breakdown:")
+        print(f"\nFinal unique vehicle breakdown:")
         for class_name, vehicles in detection_summary.items():
             print(f"   {class_name}: {len(vehicles)} unique vehicles")
     else:
-        print("\n❓ No vehicles detected in the video.")
+        print("\nNo vehicles detected in the video.")
         print("Possible reasons:")
         print("   • No vehicles present in aerial footage")
         print("   • Vehicles too small/distant to detect")
@@ -320,18 +320,18 @@ def run_live_detection():
         print("   • Need to adjust detection parameters")
 
 if __name__ == "__main__":
-    print("🚁 Live Drone Vehicle Detection")
+    print("Live Drone Vehicle Detection")
     print("=" * 60)
     
     # Check if video file exists
     if not os.path.exists(video_path):
-        print(f"❌ Video file not found: {video_path}")
+        print(f"Video file not found: {video_path}")
         print("Make sure the video file is in the current directory.")
         sys.exit(1)
     
     try:
         run_live_detection()
     except KeyboardInterrupt:
-        print("\n\n⏹️  Detection stopped by user")
+        print("\n\nDetection stopped by user")
     except Exception as e:
-        print(f"\n❌ Error: {str(e)}")
+        print(f"\nError: {str(e)}")

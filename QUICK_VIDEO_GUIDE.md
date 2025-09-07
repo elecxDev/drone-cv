@@ -2,6 +2,15 @@
 
 ## After downloading a video to data/sample/:
 
+### Command Line Interface
+```bash
+# Standard processing
+python main.py --input data/raw/sample_video.mp4 --output results/output_video.mp4
+
+# Live detection
+python live_detection.py data/raw/video.mp4
+```
+
 # Test the basic detection system
 python main.py --input data/sample/your_video.mp4
 

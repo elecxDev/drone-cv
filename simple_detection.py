@@ -46,13 +46,13 @@ def install_missing_packages(missing):
         result = subprocess.run(cmd, capture_output=True, text=True)
         
         if result.returncode == 0:
-            print("✅ Packages installed successfully!")
+            print("Packages installed successfully!")
             return True
         else:
-            print(f"❌ Installation failed: {result.stderr}")
+            print(f"Installation failed: {result.stderr}")
             return False
     except Exception as e:
-        print(f"❌ Installation error: {str(e)}")
+        print(f"Installation error: {str(e)}")
         return False
 
 def simple_video_info(video_path):
@@ -89,10 +89,10 @@ def run_basic_detection(video_path):
         import cv2
         import numpy as np
         
-        print("🚀 Starting vehicle detection...")
+        print("Starting vehicle detection...")
         
         # Load model (will download if not available)
-        print("📥 Loading YOLO model...")
+        print("Loading YOLO model...")
         model = YOLO('yolov8n.pt')  # Will auto-download
         
         # Open video
@@ -106,7 +106,7 @@ def run_basic_detection(video_path):
         width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         
-        print(f"📺 Video: {width}x{height} @ {fps:.1f} FPS")
+        print(f"Video: {width}x{height} @ {fps:.1f} FPS")
         
         # Prepare output
         output_path = f"simple_output_{Path(video_path).stem}.mp4"
@@ -118,7 +118,7 @@ def run_basic_detection(video_path):
         frame_detections = 0
         
         # Try ALL classes first to see what's being detected
-        print("🔍 Testing detection on first frame...")
+        print("Testing detection on first frame...")
         
         # Read first frame for testing
         ret, test_frame = cap.read()
@@ -126,7 +126,7 @@ def run_basic_detection(video_path):
             # Test with all classes and lower confidence
             test_results = model(test_frame, conf=0.1, verbose=False)
             
-            print(f"🧪 Test frame detection results:")
+            print(f"Test frame detection results:")
             for result in test_results:
                 boxes = result.boxes
                 if boxes is not None:
@@ -147,8 +147,8 @@ def run_basic_detection(video_path):
         # Vehicle classes - let's also try person (0) and other transport
         vehicle_classes = [0, 1, 2, 3, 5, 6, 7, 8]  # person, bicycle, car, motorcycle, bus, train, truck, boat
         
-        print("🎬 Processing frames with enhanced detection...")
-        print(f"🎯 Looking for classes: {vehicle_classes}")
+        print("Processing frames with enhanced detection...")
+        print(f"Looking for classes: {vehicle_classes}")
         
         while True:
             ret, frame = cap.read()
@@ -214,15 +214,15 @@ def run_basic_detection(video_path):
         cap.release()
         out.release()
         
-        print(f"✅ Detection complete!")
-        print(f"📊 Results:")
+        print(f"Detection complete!")
+        print(f"Results:")
         print(f"   Processed frames: {frame_count}")
         print(f"   Total detections: {detection_count}")
         print(f"   Average detections per frame: {detection_count/frame_count:.2f}")
         print(f"   Output video: {output_path}")
         
         if detection_count == 0:
-            print("\n🤔 No detections found. This could mean:")
+            print("\nNo detections found. This could mean:")
             print("   • Video has no vehicles/people visible")
             print("   • Objects are too small (very high altitude)")
             print("   • Video quality/lighting issues")
@@ -232,15 +232,15 @@ def run_basic_detection(video_path):
         return True
         
     except ImportError:
-        print("❌ ultralytics not available. Install with: pip install ultralytics")
+        print("ultralytics not available. Install with: pip install ultralytics")
         return False
     except Exception as e:
-        print(f"❌ Detection failed: {str(e)}")
+        print(f"Detection failed: {str(e)}")
         return False
 
 def main():
     """Main function."""
-    print("🚁 Simple Drone Vehicle Detection")
+    print("Simple Drone Vehicle Detection")
     print("=" * 40)
     
     if len(sys.argv) != 2:
@@ -252,38 +252,38 @@ def main():
     video_path = sys.argv[1]
     
     if not os.path.exists(video_path):
-        print(f"❌ Video file not found: {video_path}")
+        print(f"Video file not found: {video_path}")
         return
     
     # Check dependencies
-    print("🔍 Checking dependencies...")
+    print("Checking dependencies...")
     available, missing = check_dependencies()
     
     if missing:
-        print(f"📦 Installing missing packages: {', '.join(missing)}")
+        print(f"Installing missing packages: {', '.join(missing)}")
         if not install_missing_packages(missing):
-            print("❌ Failed to install dependencies. Please install manually:")
+            print("Failed to install dependencies. Please install manually:")
             print(f"   pip install {' '.join(missing)}")
             return
     
-    print("✅ Dependencies OK")
+    print("Dependencies OK")
     
     # Get video info
-    print("📹 Analyzing video...")
+    print("Analyzing video...")
     info = simple_video_info(video_path)
     
     if info is None:
-        print("❌ Cannot read video file")
+        print("Cannot read video file")
         return
     
-    print(f"📺 Video Info:")
+    print(f"Video Info:")
     print(f"   Resolution: {info['width']}x{info['height']}")
     print(f"   Duration: {info['duration']:.1f} seconds")
     print(f"   Frames: {info['frame_count']}")
     print(f"   FPS: {info['fps']:.1f}")
     
     # Ask to proceed
-    print(f"\n🎯 Ready to process video. This may take a few minutes...")
+    print(f"\nReady to process video. This may take a few minutes...")
     response = input("Continue? (y/n): ").lower().strip()
     
     if response != 'y':
@@ -294,9 +294,9 @@ def main():
     success = run_basic_detection(video_path)
     
     if success:
-        print("\n🎉 Success! Check the output video file.")
+        print("\nSuccess! Check the output video file.")
     else:
-        print("\n❌ Detection failed. Check error messages above.")
+        print("\nDetection failed. Check error messages above.")
 
 if __name__ == "__main__":
     main()

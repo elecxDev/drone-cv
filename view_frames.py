@@ -16,13 +16,13 @@ def extract_sample_frames(video_path, num_frames=5):
     """Extract sample frames from video."""
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
-        print("❌ Cannot open video")
+        print("Cannot open video")
         return False
     
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     fps = cap.get(cv2.CAP_PROP_FPS)
     
-    print(f"📺 Video has {total_frames} frames at {fps:.1f} FPS")
+    print(f"Video has {total_frames} frames at {fps:.1f} FPS")
     
     # Extract frames at regular intervals
     frame_indices = [int(total_frames * i / num_frames) for i in range(num_frames)]
@@ -42,12 +42,12 @@ def extract_sample_frames(video_path, num_frames=5):
             filepath = output_dir / filename
             cv2.imwrite(str(filepath), frame)
             saved_frames.append(str(filepath))
-            print(f"📸 Saved: {filename}")
+            print(f"Saved: {filename}")
     
     cap.release()
     
-    print(f"\n✅ Extracted {len(saved_frames)} sample frames to 'sample_frames/' folder")
-    print("📁 Open the folder to view the frames and see what's in your video!")
+    print(f"\nExtracted {len(saved_frames)} sample frames to 'sample_frames/' folder")
+    print("Open the folder to view the frames and see what's in your video!")
     
     return True
 
@@ -60,10 +60,10 @@ def main():
     video_path = sys.argv[1]
     
     if not os.path.exists(video_path):
-        print(f"❌ Video file not found: {video_path}")
+        print(f"Video file not found: {video_path}")
         return
     
-    print("🎬 Frame Extractor")
+    print("Frame Extractor")
     print("=" * 30)
     
     extract_sample_frames(video_path)
