@@ -38,7 +38,7 @@ def run_live_detection():
     # 0: person, 1: bicycle, 2: car, 3: motorcycle, 5: bus, 7: truck, 8: boat
     vehicle_classes = [0, 1, 2, 3, 5, 7, 8]
     class_names = {
-        0: 'person', 1: 'bicycle', 2: 'car', 3: 'motorcycle', 
+        0: 'bike', 1: 'bicycle', 2: 'car', 3: 'motorcycle', 
         5: 'bus', 7: 'truck', 8: 'boat'
     }
     
